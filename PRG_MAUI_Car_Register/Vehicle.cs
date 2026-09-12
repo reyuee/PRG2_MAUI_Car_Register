@@ -1,4 +1,5 @@
-﻿namespace PRG_MAUI_Car_Register
+﻿using System.Text.RegularExpressions;
+namespace PRG_MAUI_Car_Register
 {
     class Vehicle
     {
@@ -92,6 +93,30 @@
                 this.manufacturer = value;
             }
         }
+
+        public int YearModel
+        {
+            get { return yearModel; }
+            set
+            {
+                string stringValue = value.ToString();
+
+                if (value < 1895 || value > DateTime.Now.Year)
+                {
+                    throw new ArgumentException("Ogiltig årsmodell.");
+                }
+
+                if (!Regex.IsMatch(stringValue, "^[1-2][0-9][0-9][0-9]$"))
+                {
+                    throw new ArgumentException("Årsmodellen måste bestå av fyra siffror.");
+                }
+
+                this.yearModel = value;
+            }
+        }
+
+        
+        
 
            
 
