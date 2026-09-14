@@ -74,8 +74,17 @@ namespace PRG_MAUI_Car_Register
             {
                 if (String.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("En bil modell måste bestå av bokstäver, det kan inte vara tomt.");
+                    throw new ArgumentException("En bil modell kan inte vara tom.");
                 }
+
+                foreach (char c in value)
+                {
+                    if (!char.IsLetterOrDigit(c) && c != ' ' && c != '-')
+                    {
+                        throw new ArgumentException("Modell får endast innehålla bokstäver, siffror, mellanslag och bindestreck.");
+                    }
+                }
+
                 this.model = value;
             }
         }
