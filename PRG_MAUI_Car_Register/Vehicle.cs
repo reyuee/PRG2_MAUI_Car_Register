@@ -10,6 +10,8 @@ namespace PRG_MAUI_Car_Register
         private string manufacturer = string.Empty;
         private string model = string.Empty;
 
+        private int yearModel;
+
         // Konstruktor (en metod med samma namn som klassen, som returnerar ett objekt)
         public Vehicle(Type vehicleType) // en konstruktor kan, men måste inte, ta parametrar
         {
@@ -54,8 +56,17 @@ namespace PRG_MAUI_Car_Register
             {
                 if (String.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("En bil modell måste bestå av bokstäver, det kan inte vara tomt.");
+                    throw new ArgumentException("En bil modell kan inte vara tom.");
                 }
+
+                foreach (char c in value)
+                {
+                    if (!char.IsLetterOrDigit(c) && c != ' ' && c != '-')
+                    {
+                        throw new ArgumentException("Modell får endast innehålla bokstäver, siffror, mellanslag och bindestreck.");
+                    }
+                }
+
                 this.model = value;
             }
         }
@@ -70,9 +81,47 @@ namespace PRG_MAUI_Car_Register
                 {
                     throw new ArgumentException("En bils märke måste bestå av bokstäver, det kan inte vara tomt.");
                 }
+
+
+                foreach (char c in value)
+                {
+                    if (!char.IsLetterOrDigit(c) && c != ' ' && c != '-')
+                    {
+                        throw new ArgumentException("Märke får endast innehålla bokstäver, siffror, mellanslag och bindestreck.");
+                    }
+                }
+
                 this.manufacturer = value;
             }
         }
+
+        public int YearModel
+        {
+            get { return yearModel; }
+            set
+            {
+                string stringValue = value.ToString();
+
+                if (value < 1895 || value > DateTime.Now.Year)
+                {
+                    throw new ArgumentException("Ogiltig årsmodell.");
+                }
+
+                if (!Regex.IsMatch(stringValue, "^[1-2][0-9][0-9][0-9]$"))
+                {
+                    throw new ArgumentException("Årsmodellen måste bestå av fyra siffror.");
+                }
+
+                this.yearModel = value;
+            }
+        }
+
+        
+        
+
+           
+
+        
 
         //TODO Lägg till möjligheten att spara realistisk årsmodell, validera, spara och visa i objektet och visas i UI. Tips: Regex.IsMatch()
 
