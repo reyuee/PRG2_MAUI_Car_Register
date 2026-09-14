@@ -20,6 +20,8 @@
                 vehicle.Manufacturer = entryManufacturer.Text;
                 vehicle.Model = entryModel.Text;
 
+                vehicle.YearModel = int.Parse(entryYearModel.Text);
+
                 vehicleList.Add(vehicle);
                 listViewVehicles.ItemsSource = null;
                 listViewVehicles.ItemsSource = vehicleList;
@@ -93,6 +95,10 @@
             entryRegistrationNumber.Text = string.Empty;
             entryManufacturer.Text = string.Empty;
             entryModel.Text = string.Empty;
+            entryYearModel.Text = string.Empty;
+
+
         }
+
     }
 }
