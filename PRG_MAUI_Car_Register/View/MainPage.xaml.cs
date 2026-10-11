@@ -55,11 +55,29 @@ namespace PRG_MAUI_Car_Register
         {
             if (e.Value != true) return;
 
-            listViewVehicles.ItemsSource = vehicleList;
+            List<Vehicle> filteredList;
 
+            if (radioCar.IsChecked)
+            {
+                filteredList = vehicleList.Where(v => v is Car).ToList();
+            }
+            else if (radioMC.IsChecked)
+            {
+                filteredList = vehicleList.Where(v => v is MC).ToList();
+            }
+            else if (radioTruck.IsChecked)
+            {
+                filteredList = vehicleList.Where(v => v is Truck).ToList();
+            }
+            else
+            {
+                filteredList = vehicleList;
+            }
+
+            listViewVehicles.ItemsSource = filteredList;
         }
 
-            
+
         private void OnSearchClicked(object sender, EventArgs e)
         {
             string searchTerm = entrySearchRegistrationNumber.Text?.ToLower();
