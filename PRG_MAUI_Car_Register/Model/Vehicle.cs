@@ -112,21 +112,13 @@ namespace PRG_MAUI_Car_Register.Model
         }
 
 
-        public abstract string GetDescription();
+       public abstract string GetDescription();
 
-
-
-
-
-        //TODO Lägg till möjligheten att spara realistisk årsmodell, validera, spara och visa i objektet och visas i UI. Tips: Regex.IsMatch()
-
-
-        //TODO Modifiera overriden på ToString() så att allt visas som önskat i UIs listBox
-        public override string ToString()
+       public override string ToString()
         {
-            return this.registrationNumber + "\t" + this.manufacturer + "\t" + this.model + "\t" + this.yearModel;
+            return GetDescription();
         }
 
-        
+
     }   
 }
