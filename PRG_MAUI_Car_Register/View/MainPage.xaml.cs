@@ -36,7 +36,11 @@ namespace PRG_MAUI_Car_Register
                 vehicle.Manufacturer = entryManufacturer.Text;
                 vehicle.Model = entryModel.Text;
 
-                vehicle.YearModel = int.Parse(entryYearModel.Text);
+                if (!int.TryParse(entryYearModel.Text, out int parsedYear))
+                {
+                    throw new ArgumentException("Du måste fylla i en giltig årsmodell med siffror.");
+                }
+                vehicle.YearModel = parsedYear;
 
                 vehicleList.Add(vehicle);
                 
