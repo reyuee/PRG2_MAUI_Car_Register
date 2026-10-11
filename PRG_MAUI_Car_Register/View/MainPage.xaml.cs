@@ -1,15 +1,16 @@
 ﻿using PRG_MAUI_Car_Register.Model;
+using System.Collections.ObjectModel;
 
 namespace PRG_MAUI_Car_Register
 {
     public partial class MainPage : ContentPage
     {
-        List<Vehicle> vehicleList = new List<Vehicle>();
-
+        ObservableCollection<Vehicle> vehicleList = new ObservableCollection<Vehicle>();
         public MainPage()
         {
             InitializeComponent();
             pickerType.SelectedIndex = 0;
+            listViewVehicles.ItemsSource = vehicleList;
         }
 
         private void OnRegisterClicked(object sender, EventArgs e)
@@ -38,8 +39,7 @@ namespace PRG_MAUI_Car_Register
                 vehicle.YearModel = int.Parse(entryYearModel.Text);
 
                 vehicleList.Add(vehicle);
-                listViewVehicles.ItemsSource = null;
-                listViewVehicles.ItemsSource = vehicleList;
+                
 
                 ClearTextFields();
             }
@@ -71,7 +71,7 @@ namespace PRG_MAUI_Car_Register
             }
             else
             {
-                filteredList = vehicleList;
+                filteredList = vehicleList.ToList();
             }
 
             listViewVehicles.ItemsSource = filteredList;
