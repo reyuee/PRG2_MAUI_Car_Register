@@ -1,11 +1,11 @@
 ﻿using System.Text.RegularExpressions;
 namespace PRG_MAUI_Car_Register
 {
-    class Vehicle
+    public abstract class Vehicle
     {
         // Medlemsvariabler
-        public enum Type { Bil, MC, Lastbil };
-        private Type vehicleType;
+        
+        
         private string registrationNumber = string.Empty;
         private string manufacturer = string.Empty;
         private string model = string.Empty;
@@ -13,9 +13,8 @@ namespace PRG_MAUI_Car_Register
         private int yearModel;
 
         // Konstruktor (en metod med samma namn som klassen, som returnerar ett objekt)
-        public Vehicle(Type vehicleType) // en konstruktor kan, men måste inte, ta parametrar
+        public Vehicle()
         {
-            this.vehicleType = vehicleType;
         }
 
         // Get-Set för att hålla variablerna privata, och för att validera inkommande värden från UI (user interface, användargränssnittet)
@@ -42,11 +41,7 @@ namespace PRG_MAUI_Car_Register
         }
 
         // Fordonstyp tas in från dropdown-menyn, och behöver därför inte valideras
-        public Type VehicleType
-        {
-            get { return vehicleType; }
-            set { this.vehicleType = value; }
-        }
+        
 
         //TODO Tillverkare ska valideras, sparas i objektet och visas i UI
         public string Model
@@ -117,7 +112,7 @@ namespace PRG_MAUI_Car_Register
         }
 
 
-
+        public abstract string GetDescription();
 
 
 
@@ -129,7 +124,9 @@ namespace PRG_MAUI_Car_Register
         //TODO Modifiera overriden på ToString() så att allt visas som önskat i UIs listBox
         public override string ToString()
         {
-            return this.registrationNumber + "\t" + this.vehicleType + "\t" + this.manufacturer + "\t" + this.model + "\t" + this.yearModel;
+            return this.registrationNumber + "\t" + this.manufacturer + "\t" + this.model + "\t" + this.yearModel;
         }
+
+        
     }   
 }
