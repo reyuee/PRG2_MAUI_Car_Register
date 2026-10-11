@@ -1,5 +1,5 @@
 ﻿using System.Text.RegularExpressions;
-namespace PRG_MAUI_Car_Register
+namespace PRG_MAUI_Car_Register.Model
 {
     public abstract class Vehicle
     {
