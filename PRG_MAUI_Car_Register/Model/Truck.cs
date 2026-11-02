@@ -8,9 +8,11 @@ namespace PRG_MAUI_Car_Register.Model
 {
     public class Truck : Vehicle
     {
+        public int LoadCapacity { get; set; } = 50000;
+
         public override string GetDescription()
         {
-            return $"Lastbil\t{RegistrationNumber}\t{Manufacturer}\t{Model}\t{YearModel}";
+            return $"{RegistrationNumber}\tLastbil\t{Manufacturer}\t{Model}\t{YearModel}\tMaxlast: {LoadCapacity} kg";
         }
     }
 }

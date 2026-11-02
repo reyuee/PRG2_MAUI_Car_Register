@@ -8,9 +8,11 @@ namespace PRG_MAUI_Car_Register.Model
 {
     public class Car : Vehicle
     {
+        public int Doors { get; set; } = 4;
+
         public override string GetDescription()
         {
-            return $"Bil\t{RegistrationNumber}\t{Manufacturer}\t{Model}\t{YearModel}";
+            return $"{RegistrationNumber}\tBil\t{Manufacturer}\t{Model}\t{YearModel}\t{Doors} dörrar";
         }
     }
 }

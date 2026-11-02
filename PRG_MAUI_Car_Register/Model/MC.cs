@@ -8,9 +8,11 @@ namespace PRG_MAUI_Car_Register.Model
 {
     public class MC : Vehicle
     {
+        public int EngineVolume { get; set; } = 600;
+
         public override string GetDescription()
         {
-            return $"MC\t{RegistrationNumber}\t{Manufacturer}\t{Model}\t{YearModel}";
+            return $"{RegistrationNumber}\tMC\t{Manufacturer}\t{Model}\t{YearModel}\t{EngineVolume} kubikcentimeter";
         }
     }
 }
