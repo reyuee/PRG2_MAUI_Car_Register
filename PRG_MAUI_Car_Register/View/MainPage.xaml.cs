@@ -96,11 +96,8 @@ namespace PRG_MAUI_Car_Register
 
             if (foundVehicle != null)
             {
-                labelSearchResult.Text = $"Fordon hittat:\n" +
-                                         $"Registreringsnummer: {foundVehicle.RegistrationNumber}\n" +
-                                         $"Tillverkare: {foundVehicle.Manufacturer}\n" +
-                                         $"Modell: {foundVehicle.Model}\n";
-                                         
+
+                labelSearchResult.Text = foundVehicle.GetDescription();
             }
             else
             {
