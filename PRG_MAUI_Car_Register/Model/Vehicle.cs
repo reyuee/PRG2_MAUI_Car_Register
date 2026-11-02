@@ -29,14 +29,16 @@ namespace PRG_MAUI_Car_Register.Model
                     throw new ArgumentException("Registreringsnummer får inte vara tomt.");
                 }
 
-                bool isValid = Regex.IsMatch(value, "^[A-Z]{3}[0-9]{2}[A-Z0-9]$");
+                string upperValue = value.ToUpper();
+
+                bool isValid = Regex.IsMatch(upperValue, "^[A-Z]{3}[0-9]{2}[A-Z0-9]$");
 
                 if (!isValid)
                 {
                     throw new ArgumentException("Fel format formatet måste vara ABC123 eller ABC12A.");
                 }
 
-                registrationNumber = value.ToUpper();
+                registrationNumber = upperValue;
             }
         }
 
