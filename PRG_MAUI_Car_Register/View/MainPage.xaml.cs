@@ -59,23 +59,26 @@ namespace PRG_MAUI_Car_Register
         {
             if (e.Value != true) return;
 
-            List<Vehicle> filteredList;
+            IEnumerable<Vehicle> filteredList;
 
             if (radioCar.IsChecked)
             {
-                filteredList = vehicleList.Where(v => v is Car).ToList();
+                filteredList = vehicleList.OfType<Car>();
             }
             else if (radioMC.IsChecked)
             {
-                filteredList = vehicleList.Where(v => v is MC).ToList();
+                filteredList = vehicleList.OfType<MC>();
             }
             else if (radioTruck.IsChecked)
             {
-                filteredList = vehicleList.Where(v => v is Truck).ToList();
+                filteredList = vehicleList.OfType<Truck>();
+
             }
             else
             {
-                filteredList = vehicleList.ToList();
+
+                filteredList = vehicleList;
+
             }
 
             listViewVehicles.ItemsSource = filteredList;
